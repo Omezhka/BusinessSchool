@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BusinessSchool.Models.SchoolViewModels.EnrollmentDateGroup>
+@{
+    ViewData["Title"] = "ы";
+}
+
+<h2>Статистика обучения</h2>
+
+<table>
+    <tr>
+        <th>
+            Дата регистрации
+        </th>
+        <th>
+            Количество студентов
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td>
+                        @item.StudentCount
+                    </td>
+                </tr>
+            }
+</table>
+
+<h2>Рейтинг курсов</h2>
