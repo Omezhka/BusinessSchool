@@ -16,16 +16,53 @@
     </tr>
 
     @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
-                    </td>
-                    <td>
-                        @item.StudentCount
-                    </td>
-                </tr>
-            }
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @item.StudentCount
+            </td>
+        </tr>
+    }
 </table>
 
-<h2>Рейтинг курсов</h2>
+<br />
+
+<h2>Рейтинг Курсов</h2>
+
+<table>
+    <tr>
+        <th>Название курса</th>
+        <th>Количество студентов</th>
+    </tr>
+
+    @foreach (var item in (Dictionary<string, int>)ViewData["coursesRating"])
+    {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
+<br />
+
+<h2>Рейтинг студентов</h2>
+
+<table>
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Количество курсов</th>
+    </tr>
+
+    @foreach (var item in (Dictionary<Student, int>)ViewData["studentsRating"])
+    {
+        <tr>
+            <td>@item.Key.LastName</td>
+            <td>@item.Key.FirstName</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
